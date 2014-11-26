@@ -9,7 +9,7 @@ use yii\db\ActiveRecord;
  * This is the model class for table "classes".
  *
  * @property integer $id
- * @property integer $num
+ * @property integer $num_class
  * @property integer $school_id
  * @property string $letter
 
@@ -31,7 +31,7 @@ class Classes extends ActiveRecord
     {
         return [
             [['school_id'], 'integer'],
-            [['num'], 'integer'],
+            [['num_class'], 'integer'],
             [['letter'], 'string' , 'max' => 1]
         ];
     }
