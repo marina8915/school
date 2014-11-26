@@ -21,7 +21,7 @@ class Student extends ActiveRecord
      */
     public static function tableName()
     {
-        return 'students';
+        return 'student';
     }
 
     /**
@@ -30,8 +30,8 @@ class Student extends ActiveRecord
     public function rules()
     {
         return [
-            [['classes_id'], 'integer'],
-            [['name'], 'string' , 'max' => 255]
+            [['name'], 'string' , 'max' => 255],
+            [['class_id'], 'integer']
         ];
     }
 
@@ -42,7 +42,7 @@ class Student extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'classes_id' => 'Classes ID',
+            'class_id' => 'Class ID',
             'name' => 'Name'
         ];
     }
@@ -51,7 +51,7 @@ class Student extends ActiveRecord
      */
     public function getClasses()
     {
-        return $this->hasOne(Classes::classname(),['id' => 'classes_id'] );
+        return $this->hasOne(Classes::className(),['id' => 'class_id'] );
     }
 
 }

@@ -21,7 +21,7 @@ class Lesson extends ActiveRecord
      */
     public static function tableName()
     {
-        return 'lessons';
+        return 'lesson';
     }
 
     /**
@@ -30,7 +30,7 @@ class Lesson extends ActiveRecord
     public function rules()
     {
         return [
-            [['classes_id'], 'integer'],
+            [['class_id'], 'integer'],
             [['title'], 'string' , 'max' => 255]
         ];
     }
@@ -42,7 +42,7 @@ class Lesson extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'classes_id' => 'Classes ID',
+            'class_id' => 'Class ID',
             'title' => 'Title'
         ];
     }
@@ -51,7 +51,7 @@ class Lesson extends ActiveRecord
      */
     public function getClasses()
     {
-        return $this->hasMany(Classes::className(), ['id' => 'classes_id'])
-            ->viaTable('authors_book', ['lesson_id' => 'id']);
+        return $this->hasMany(Classes::className(), ['id' => 'class_id'])
+            ->viaTable('class_lesson', ['lesson_id' => 'id']);
     }
 }

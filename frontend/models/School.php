@@ -20,7 +20,7 @@ class Authors extends ActiveRecord
      */
     public static function tableName()
     {
-        return 'schools';
+        return 'school';
     }
 
     /**
@@ -29,7 +29,7 @@ class Authors extends ActiveRecord
     public function rules()
     {
         return [
-            [['classes_id'], 'integer'],
+            [['class_id'], 'integer'],
             [['num'], 'integer' ]
         ];
     }
@@ -42,7 +42,7 @@ class Authors extends ActiveRecord
         return [
             'id' => 'ID',
             'num' => 'Num',
-            'classes_id' => 'Classes ID',
+            'class_id' => 'Class ID',
         ];
     }
     /**
@@ -51,6 +51,6 @@ class Authors extends ActiveRecord
      */
     public function getClasses()
     {
-        return $this->hasMany(Classes::className(), ['schools_id'=>'id']);
+        return $this->hasMany(Classes::className(), ['school_id'=>'id']);
     }
 }
