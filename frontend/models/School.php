@@ -10,10 +10,10 @@ use yii\db\ActiveRecord;
  *
  * @property integer $id
  * @property integer $num
- * @property integer $classes_id
+ * @property integer $class_id
 
  */
-class Authors extends ActiveRecord
+class School extends ActiveRecord
 {
     /**
      * @inheritdoc

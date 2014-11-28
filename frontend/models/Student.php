@@ -9,9 +9,8 @@ use yii\db\ActiveRecord;
  * This is the model class for table "student".
  *
  * @property integer $id
- * @property integer $classes_id
+ * @property integer $class_id
  * @property string $name
-
  */
 
 class Student extends ActiveRecord
@@ -53,5 +52,4 @@ class Student extends ActiveRecord
     {
         return $this->hasOne(Classes::className(),['id' => 'class_id'] );
     }
-
 }
