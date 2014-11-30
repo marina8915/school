@@ -14,7 +14,6 @@ class m141130_161056_relation extends Migration
             'lesson_id' => Schema::TYPE_INTEGER,
        ], $tableOptions);
 
-
        $this->createIndex('FK_classes_lesson', '{{%classes_lesson}}', 'class_id');
        $this->addForeignKey('FK_classes_lesson', '{{%classes_lesson}}', 'class_id', '{{%classes}}', 'id', 'SET NULL', 'CASCADE');
 
