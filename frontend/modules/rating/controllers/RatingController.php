@@ -62,6 +62,8 @@ class RatingController extends Controller
     {
         $model = new Rating();
 
+        Yii::info('add_rating', 'rating');
+
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
         } else {
@@ -80,6 +82,8 @@ class RatingController extends Controller
     public function actionUpdate($id)
     {
         $model = $this->findModel($id);
+
+        Yii::info('update_rating', 'rating');
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -100,6 +104,8 @@ class RatingController extends Controller
     {
         $this->findModel($id)->delete();
 
+        Yii::info('delete_rating', 'rating');
+        
         return $this->redirect(['index']);
     }
 
