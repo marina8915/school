@@ -15,11 +15,9 @@ use app\models\Lesson;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'student_id')->textInput() ?>
     <?php $students = ArrayHelper::map(Student::find()->asArray()->all(), 'id', 'name') ?>
     <?= $form->field($model, 'student_id')->dropDownList($students)?>
 
-    <?= $form->field($model, 'lesson_id')->textInput() ?>
     <?php $lessons = ArrayHelper::map(Lesson::find()->asArray()->all(), 'id', 'title') ?>
     <?= $form->field($model, 'lesson_id')->dropDownList($lessons)?>
 
