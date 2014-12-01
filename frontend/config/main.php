@@ -27,7 +27,7 @@ return [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['info'],
                     'categories' => ['rating'],
-                    'logFile' => '@app/runtime/logs/Orders/requests.log',
+                    'logFile' => '@app/runtime/logs/Rating/requests.log',
                     'maxFileSize' => 1024 * 2,
                     'maxLogFiles' => 20,
                 ],
@@ -36,6 +36,9 @@ return [
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'hello' => [
+            'class' => 'frontend\components\HelloWorld',
+                   ],
     ],
     'params' => $params,
 ];

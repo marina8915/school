@@ -65,6 +65,7 @@ AppAsset::register($this);
         ]) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
+            <?php  \Yii::$app->hello->Hello(); ?>
         </div>
     </div>
 

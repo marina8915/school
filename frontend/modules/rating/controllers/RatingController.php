@@ -105,7 +105,7 @@ class RatingController extends Controller
         $this->findModel($id)->delete();
 
         Yii::info('delete_rating', 'rating');
-        
+
         return $this->redirect(['index']);
     }
 
