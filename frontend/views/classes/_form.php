@@ -2,10 +2,13 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\models\School;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Classes */
 /* @var $form yii\widgets\ActiveForm */
+
 ?>
 
 <div class="classes-form">
@@ -14,7 +17,8 @@ use yii\widgets\ActiveForm;
 
     <?= $form->field($model, 'letter')->textInput(['maxlength' => 255]) ?>
 
-    <?= $form->field($model, 'school_id')->textInput() ?>
+    <?php $list = ArrayHelper::map(School::find()->asArray()->all(), 'id', 'num') ?>
+    <?= $form->field($model, 'school_id')->dropDownList($list)?>
 
     <?= $form->field($model, 'num_class')->textInput() ?>
 

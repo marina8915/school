@@ -5,22 +5,22 @@ namespace app\models;
 use Yii;
 
 /**
- * This is the model class for table "student".
+ * This is the model class for table "classes_lesson".
  *
- * @property integer $id
  * @property integer $class_id
- * @property string $name
+ * @property integer $lesson_id
  *
+ * @property Lesson $lesson
  * @property Classes $class
  */
-class Student extends \yii\db\ActiveRecord
+class ClassesLesson extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'student';
+        return 'classes_lesson';
     }
 
     /**
@@ -29,8 +29,7 @@ class Student extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['class_id'], 'integer'],
-            [['name'], 'string', 'max' => 255]
+            [['class_id', 'lesson_id'], 'integer']
         ];
     }
 
@@ -40,10 +39,17 @@ class Student extends \yii\db\ActiveRecord
     public function attributeLabels()
     {
         return [
-            'id' => 'ID',
             'class_id' => 'Class ID',
-            'name' => 'Name',
+            'lesson_id' => 'Lesson ID',
         ];
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLesson()
+    {
+        return $this->hasOne(Lesson::className(), ['id' => 'lesson_id']);
     }
 
     /**

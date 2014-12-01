@@ -3,18 +3,20 @@
 namespace app\models;
 
 use Yii;
-use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "classes".
  *
  * @property integer $id
- * @property integer $num_class
- * @property integer $school_id
  * @property string $letter
-
+ * @property string $school_id
+ * @property integer $num_class
+ *
+ * @property School $school
+ * @property ClassesLesson[] $classesLessons
+ * @property Student[] $students
  */
-class Classes extends ActiveRecord
+class Classes extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
@@ -30,9 +32,9 @@ class Classes extends ActiveRecord
     public function rules()
     {
         return [
-            [['school_id'], 'integer'],
             [['num_class'], 'integer'],
-            [['letter'], 'string' , 'max' => 1]
+            [['letter'], 'string', 'max' => 255],
+            [['school_id'], 'string'],
         ];
     }
 
@@ -43,9 +45,35 @@ class Classes extends ActiveRecord
     {
         return [
             'id' => 'ID',
-            'num_class' => 'Num_class',
+            'letter' => 'Letter',
             'school_id' => 'School ID',
-            'letter' => 'Letter'
+            'num_class' => 'Num Class',
         ];
     }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getSchool()
+    {
+        return $this->hasOne(School::className(), ['id' => 'school_id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getLessons()
+    {
+        return $this->hasMany(Lesson::className(), ['id' => 'lesson_id'])
+            ->viaTable('classes_lesson', ['class_id' => 'id']);
+    }
+
+    /**
+     * @return \yii\db\ActiveQuery
+     */
+    public function getStudents()
+    {
+        return $this->hasMany(Student::className(), ['class_id' => 'id']);
+    }
+
 }

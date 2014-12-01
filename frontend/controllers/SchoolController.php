@@ -4,7 +4,7 @@ namespace frontend\controllers;
 
 use Yii;
 use app\models\School;
-use yii\data\ActiveDataProvider;
+use app\models\seach\SchoolSeach;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -32,11 +32,11 @@ class SchoolController extends Controller
      */
     public function actionIndex()
     {
-        $dataProvider = new ActiveDataProvider([
-            'query' => School::find(),
-        ]);
+        $searchModel = new SchoolSeach();
+        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
 
         return $this->render('index', [
+            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }

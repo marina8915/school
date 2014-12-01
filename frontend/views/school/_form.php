@@ -12,8 +12,6 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'class_id')->textInput() ?>
-
     <?= $form->field($model, 'num')->textInput() ?>
 
     <div class="form-group">

@@ -1,16 +1,16 @@
 <?php
 
-namespace frontend\models;
+namespace app\models\seach;
 
 use Yii;
 use yii\base\Model;
 use yii\data\ActiveDataProvider;
-use app\models\Lesson;
+use app\models\Student;
 
 /**
- * LessonSeach represents the model behind the search form about `app\models\Lesson`.
+ * StudentSeach represents the model behind the search form about `app\models\Student`.
  */
-class LessonSeach extends Lesson
+class StudentSeach extends Student
 {
     /**
      * @inheritdoc
@@ -19,7 +19,7 @@ class LessonSeach extends Lesson
     {
         return [
             [['id', 'class_id'], 'integer'],
-            [['title'], 'safe'],
+            [['name'], 'safe'],
         ];
     }
 
@@ -41,7 +41,7 @@ class LessonSeach extends Lesson
      */
     public function search($params)
     {
-        $query = Lesson::find();
+        $query = Student::find();
 
         $dataProvider = new ActiveDataProvider([
             'query' => $query,
@@ -56,7 +56,7 @@ class LessonSeach extends Lesson
             'class_id' => $this->class_id,
         ]);
 
-        $query->andFilterWhere(['like', 'title', $this->title]);
+        $query->andFilterWhere(['like', 'name', $this->name]);
 
         return $dataProvider;
     }
