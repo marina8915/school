@@ -1,18 +1,18 @@
 <?php
 
-namespace frontend\controllers;
+namespace app\modules\rating\controllers;
 
 use Yii;
-use app\models\Classes;
-use app\models\seach\ClassesSeach;
+use app\modules\rating\models\Rating;
+use yii\data\ActiveDataProvider;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
 
 /**
- * ClassesController implements the CRUD actions for Classes model.
+ * RatingController implements the CRUD actions for Rating model.
  */
-class ClassesController extends Controller
+class RatingController extends Controller
 {
     public function behaviors()
     {
@@ -27,22 +27,22 @@ class ClassesController extends Controller
     }
 
     /**
-     * Lists all Classes models.
+     * Lists all Rating models.
      * @return mixed
      */
     public function actionIndex()
     {
-        $searchModel = new ClassesSeach();
-        $dataProvider = $searchModel->search(Yii::$app->request->queryParams);
+        $dataProvider = new ActiveDataProvider([
+            'query' => Rating::find(),
+        ]);
 
         return $this->render('index', [
-            'searchModel' => $searchModel,
             'dataProvider' => $dataProvider,
         ]);
     }
 
     /**
-     * Displays a single Classes model.
+     * Displays a single Rating model.
      * @param integer $id
      * @return mixed
      */
@@ -54,13 +54,13 @@ class ClassesController extends Controller
     }
 
     /**
-     * Creates a new Classes model.
+     * Creates a new Rating model.
      * If creation is successful, the browser will be redirected to the 'view' page.
      * @return mixed
      */
     public function actionCreate()
     {
-        $model = new Classes();
+        $model = new Rating();
 
         if ($model->load(Yii::$app->request->post()) && $model->save()) {
             return $this->redirect(['view', 'id' => $model->id]);
@@ -72,7 +72,7 @@ class ClassesController extends Controller
     }
 
     /**
-     * Updates an existing Classes model.
+     * Updates an existing Rating model.
      * If update is successful, the browser will be redirected to the 'view' page.
      * @param integer $id
      * @return mixed
@@ -91,7 +91,7 @@ class ClassesController extends Controller
     }
 
     /**
-     * Deletes an existing Classes model.
+     * Deletes an existing Rating model.
      * If deletion is successful, the browser will be redirected to the 'index' page.
      * @param integer $id
      * @return mixed
@@ -104,19 +104,18 @@ class ClassesController extends Controller
     }
 
     /**
-     * Finds the Classes model based on its primary key value.
+     * Finds the Rating model based on its primary key value.
      * If the model is not found, a 404 HTTP exception will be thrown.
      * @param integer $id
-     * @return Classes the loaded model
+     * @return Rating the loaded model
      * @throws NotFoundHttpException if the model cannot be found
      */
     protected function findModel($id)
     {
-        if (($model = Classes::findOne($id)) !== null) {
+        if (($model = Rating::findOne($id)) !== null) {
             return $model;
         } else {
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
-
 }

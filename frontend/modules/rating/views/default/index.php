@@ -1,4 +1,4 @@
-<div class="1-default-index">
+<div class="rating-default-index">
     <h1><?= $this->context->action->uniqueId ?></h1>
     <p>
         This is the view content for action "<?= $this->context->action->id ?>".
