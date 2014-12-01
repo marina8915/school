@@ -33,7 +33,8 @@ class Rating extends \yii\db\ActiveRecord
     public function rules()
     {
         return [
-            [['student_id', 'lesson_id', 'rating'], 'integer']
+            [['rating'], 'integer'],
+            [['student_id', 'lesson_id'], 'string']
         ];
     }
 
@@ -44,8 +45,8 @@ class Rating extends \yii\db\ActiveRecord
     {
         return [
             'id' => 'ID',
-            'student_id' => 'Student ID',
-            'lesson_id' => 'Lesson ID',
+            'student_id' => 'Student',
+            'lesson_id' => 'Lesson',
             'rating' => 'Rating',
         ];
     }
