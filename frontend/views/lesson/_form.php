@@ -2,6 +2,8 @@
 
 use yii\helpers\Html;
 use yii\widgets\ActiveForm;
+use yii\helpers\ArrayHelper;
+use app\models\Classes;
 
 /* @var $this yii\web\View */
 /* @var $model app\models\Lesson */
@@ -12,7 +14,8 @@ use yii\widgets\ActiveForm;
 
     <?php $form = ActiveForm::begin(); ?>
 
-    <?= $form->field($model, 'class_id')->textInput() ?>
+    <?php $list = ArrayHelper::map(Classes::find()->asArray()->all(), 'id', 'id') ?>
+    <?= $form->field($model, 'class_id')->dropDownList($list)?>
 
     <?= $form->field($model, 'title')->textInput(['maxlength' => 255]) ?>
 

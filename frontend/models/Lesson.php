@@ -2,26 +2,25 @@
 
 namespace app\models;
 
-
 use Yii;
-use yii\db\ActiveRecord;
 
 /**
  * This is the model class for table "lesson".
  *
  * @property integer $id
- * @property integer $classes_id
+ * @property integer $class_id
  * @property string $title
-
+ *
+ * @property ClassesLesson[] $classesLessons
  */
-class Lesson extends ActiveRecord
+class Lesson extends \yii\db\ActiveRecord
 {
     /**
      * @inheritdoc
      */
     public static function tableName()
     {
-        return 'lessons';
+        return 'lesson';
     }
 
     /**
@@ -31,7 +30,7 @@ class Lesson extends ActiveRecord
     {
         return [
             [['class_id'], 'integer'],
-            [['title'], 'string' , 'max' => 255]
+            [['title'], 'string', 'max' => 255]
         ];
     }
 
@@ -43,15 +42,16 @@ class Lesson extends ActiveRecord
         return [
             'id' => 'ID',
             'class_id' => 'Class ID',
-            'title' => 'Title'
+            'title' => 'Title',
         ];
     }
+
     /**
-     * Declares a `many_many` relation.
+     * @return \yii\db\ActiveQuery
      */
     public function getClasses()
     {
         return $this->hasMany(Classes::className(), ['id' => 'class_id'])
-            ->viaTable('class_lesson', ['lesson_id' => 'id']);
+            ->viaTable('classes_lesson', ['lesson_id' => 'id']);
     }
 }

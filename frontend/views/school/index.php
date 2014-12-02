@@ -4,6 +4,7 @@ use yii\helpers\Html;
 use yii\grid\GridView;
 
 /* @var $this yii\web\View */
+/* @var $searchModel app\models\seach\SchoolSeach */
 /* @var $dataProvider yii\data\ActiveDataProvider */
 
 $this->title = 'Schools';
@@ -12,6 +13,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="school-index">
 
     <h1><?= Html::encode($this->title) ?></h1>
+    <?php // echo $this->render('_search', ['model' => $searchModel]); ?>
 
     <p>
         <?= Html::a('Create School', ['create'], ['class' => 'btn btn-success']) ?>
@@ -19,11 +21,11 @@ $this->params['breadcrumbs'][] = $this->title;
 
     <?= GridView::widget([
         'dataProvider' => $dataProvider,
+        'filterModel' => $searchModel,
         'columns' => [
             ['class' => 'yii\grid\SerialColumn'],
 
             'id',
-            'class_id',
             'num',
 
             ['class' => 'yii\grid\ActionColumn'],

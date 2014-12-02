@@ -10,9 +10,9 @@ class m141126_085134_schoolTable extends Migration
 
         $this->createTable('{{%school}}', [
             'id' => Schema::TYPE_PK,
-            'class_id' => Schema::TYPE_INTEGER,
             'num' => Schema::TYPE_INTEGER,
         ], $tableOptions);
+
     }
 
     public function down()

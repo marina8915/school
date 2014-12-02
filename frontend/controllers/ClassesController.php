@@ -4,7 +4,7 @@ namespace frontend\controllers;
 
 use Yii;
 use app\models\Classes;
-use app\models\ClassesSeach;
+use app\models\seach\ClassesSeach;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
@@ -118,4 +118,5 @@ class ClassesController extends Controller
             throw new NotFoundHttpException('The requested page does not exist.');
         }
     }
+
 }
