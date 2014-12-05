@@ -23,11 +23,22 @@ return [
                     'class' => 'yii\log\FileTarget',
                     'levels' => ['error', 'warning'],
                 ],
+                [
+                    'class' => 'yii\log\FileTarget',
+                    'levels' => ['info'],
+                    'categories' => ['rating'],
+                    'logFile' => '@app/runtime/logs/Rating/requests.log',
+                    'maxFileSize' => 1024 * 2,
+                    'maxLogFiles' => 20,
+                ],
             ],
         ],
         'errorHandler' => [
             'errorAction' => 'site/error',
         ],
+        'hello' => [
+            'class' => 'frontend\components\HelloWorld',
+                   ],
     ],
     'params' => $params,
 ];

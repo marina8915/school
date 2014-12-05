@@ -46,7 +46,7 @@ class Classes extends \yii\db\ActiveRecord
         return [
             'id' => 'ID',
             'letter' => 'Letter',
-            'school_id' => 'School ID',
+            'school_id' => 'Num School',
             'num_class' => 'Num Class',
         ];
     }

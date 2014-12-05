@@ -9,12 +9,6 @@ class m141126_090052_tables_classes_lessons_student extends Migration
     {
         $tableOptions = null;
 
-        $this->createTable('{{%classes}}', [
-            'id' => Schema::TYPE_PK,
-            'letter' => Schema::TYPE_STRING,
-            'school_id' => Schema::TYPE_INTEGER,
-            'num_class' => Schema::TYPE_INTEGER,
-        ], $tableOptions);
         $this->createTable('{{%lesson}}', [
             'id' => Schema::TYPE_PK,
             'class_id' => Schema::TYPE_INTEGER,
@@ -24,6 +18,12 @@ class m141126_090052_tables_classes_lessons_student extends Migration
             'id' => Schema::TYPE_PK,
             'class_id' => Schema::TYPE_INTEGER,
             'name' => Schema::TYPE_STRING,
+        ], $tableOptions);
+      $this->createTable('{{%classes}}', [
+            'id' => Schema::TYPE_PK,
+            'letter' => Schema::TYPE_STRING,
+            'school_id' => Schema::TYPE_INTEGER,
+            'num_class' => Schema::TYPE_INTEGER,
         ], $tableOptions);
 
        $this->createIndex('FK_student_class', '{{%student}}', 'class_id');
@@ -35,8 +35,8 @@ class m141126_090052_tables_classes_lessons_student extends Migration
 
     public function safeDown()
     {
-        $this->dropTable('{{%classes}}');
         $this->dropTable('{{%lesson}}');
         $this->dropTable('{{%student}}');
+        $this->dropTable('{{%classes}}');
     }
 }

@@ -24,7 +24,5 @@ class m141130_161056_relation extends Migration
     public function down()
     {
          $this->dropTable('{{%classes_lesson}}');
-
-        return false;
     }
 }

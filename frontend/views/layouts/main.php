@@ -40,6 +40,7 @@ AppAsset::register($this);
                 ['label' => 'Classes', 'url' => ['/classes/index']],
                 ['label' => 'Lesson', 'url' => ['/lesson/index']],
                 ['label' => 'Student', 'url' => ['/student/index']],
+                ['label' => 'Rating', 'url' => ['/rating/rating/index']],
             ];
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
@@ -64,6 +65,7 @@ AppAsset::register($this);
         ]) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
+            <?php  \Yii::$app->hello->Hello(); ?>
         </div>
     </div>
 
