@@ -17,7 +17,9 @@
         "php": ">=5.4.0",
         "yiisoft/yii2": "*",
         "yiisoft/yii2-bootstrap": "*",
-        "yiisoft/yii2-swiftmailer": "*"
+        "yiisoft/yii2-swiftmailer": "*",
+        "yii2mod/yii2-gii-extended": "*",
+        "marina8915/yii2-simple": "*"
     },
     "require-dev": {
         "yiisoft/yii2-codeception": "*",
