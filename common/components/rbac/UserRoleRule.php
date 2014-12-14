@@ -20,10 +20,9 @@ class UserRoleRule extends Rule
             } elseif ($item->name === 'student') {
                 return $role == User::ROLE_USER || $role == User::ROLE_STUDENT;
             } elseif ($item->name === 'teacher') {
-                return $role == User::ROLE_USER || $role == User::ROLE_STUDENT || $role == User::ROLE_TEACHER;
-            } 
-            elseif ($item->name === 'admin') {
-                return $role == User::ROLE_ADMIN || User::ROLE_USER || $role == User::ROLE_STUDENT || $role == User::ROLE_TEACHER;
+                return $role == User::ROLE_STUDENT || $role == User::ROLE_TEACHER;
+            } elseif ($item->name === 'admin') {
+                return $role == User::ROLE_TEACHER || $role == User::ROLE_ADMIN;
             }
         }
         return false;

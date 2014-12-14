@@ -5,7 +5,8 @@ use Yii;
 use yii\filters\AccessControl;
 use yii\web\Controller;
 use yii\filters\VerbFilter;
-use backend\models\LoginForm;
+use yii\web\ForbiddenHttpException;
+use common\models\LoginForm;
 
 /**
  * Site controller
@@ -28,7 +29,8 @@ class SiteController extends Controller
                     ],
                     [
                         'allow' => true,
-                        'roles' => ['student'],
+                        'roles' => ['admin','student','teacher'],
+
                     ],
                 ],
             ],
@@ -55,7 +57,11 @@ class SiteController extends Controller
 
     public function actionIndex()
     {
-        return $this->render('index');
+        if (!\Yii::$app->user->can('dashboard')) {
+            return $this->render('index');
+        } else {
+            throw new ForbiddenHttpException('Access denied');
+        }
     }
 
     public function actionLogin()
