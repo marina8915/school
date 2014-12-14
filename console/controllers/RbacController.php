@@ -1,8 +1,11 @@
 <?php
 namespace console\controllers;
+
 use Yii;
 use yii\console\Controller;
 use common\components\rbac\UserRoleRule;
+use common\models\User;
+
 class RbacController extends Controller
 {
     public function actionInit()
@@ -41,7 +44,11 @@ class RbacController extends Controller
         $auth->addChild($student, $user);
         $auth->addChild($student, $dashboard);
         $auth->addChild($teacher, $student);
-        $auth->addChild($teacher, $dashboard);
         $auth->addChild($admin, $teacher);
+
+        $auth->assign($user, User::ROLE_USER);
+        $auth->assign($student, User::ROLE_STUDENT);
+        $auth->assign($teacher, User::ROLE_TEACHER);
+        $auth->assign($admin, User::ROLE_ADMIN);
     }
 }

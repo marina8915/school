@@ -1,9 +1,11 @@
 <?php
 namespace common\components\rbac;
+
 use Yii;
 use yii\rbac\Rule;
 use yii\helpers\ArrayHelper;
 use common\models\User;
+
 class UserRoleRule extends Rule
 {
     public $name = 'userRole';

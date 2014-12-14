@@ -24,7 +24,6 @@ return [
         'ruleName' => 'userRole',
         'children' => [
             'student',
-            'dashboard',
         ],
     ],
     'admin' => [
