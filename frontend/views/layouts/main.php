@@ -65,7 +65,8 @@ AppAsset::register($this);
         ]) ?>
         <?= Alert::widget() ?>
         <?= $content ?>
-            <?php  \Yii::$app->hello->Hello(); ?>
+            <?php  \Yii::$app->hello->Hello(); ?></br>
+            <?= \marina\simple\AutoloadExample::widget(); ?>`
         </div>
     </div>
 
