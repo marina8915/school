@@ -13,5 +13,14 @@ return [
 		    'assignmentFile' => '@common/components/rbac/assignments.php',
 		    'ruleFile' => '@common/components/rbac/rules.php'
         ],
+	'urlManager' => [ 
+		'enablePrettyUrl' => true,
+           	'showScriptName' => false,
+		'rules'=>[
+			'' => 'site/index',
+			'login' => 'site/login',         
+		],
+        
+	],
     ],
 ];
