@@ -8,6 +8,7 @@ use app\models\seach\SchoolSeach;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * SchoolController implements the CRUD actions for School model.
@@ -23,6 +24,37 @@ class SchoolController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+	    'access' => [
+		        'class' => AccessControl::className(),
+		        'rules' => [
+		           [ 
+				'actions' => ['view'],
+		                'allow' => true,
+		                'roles' => ['student'],
+		            ],
+			    [ 
+				'actions' => ['update'],
+		                'allow' => true,
+		                'roles' => ['teacher'],
+		            ],
+			    [ 
+				'actions' => ['delete', 'create'],
+		                'allow' => true,
+		                'roles' => ['admin'],
+		            ],
+			    [
+		                'actions' => ['signup', 'index'],
+		                'allow' => true,
+		                'roles' => ['?', 'student'],
+		            ],
+		            [
+		                'actions' => ['logout'],
+		                'allow' => true,
+		                'roles' => ['@'],
+		            ],
+			],
+	],
+
         ];
     }
 
