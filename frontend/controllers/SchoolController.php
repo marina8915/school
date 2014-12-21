@@ -43,12 +43,12 @@ class SchoolController extends Controller
 		                'roles' => ['admin'],
 		            ],
 			    [
-		                'actions' => ['signup', 'index'],
+		                'actions' => ['signup'],
 		                'allow' => true,
-		                'roles' => ['?', 'student'],
+		                'roles' => ['?'],
 		            ],
 		            [
-		                'actions' => ['logout'],
+		                'actions' => ['logout', 'index'],
 		                'allow' => true,
 		                'roles' => ['@'],
 		            ],
