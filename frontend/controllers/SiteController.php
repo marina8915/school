@@ -71,6 +71,12 @@ class SiteController extends Controller
         return $this->render('index');
     }
 
+    public function actionDashboard()
+    {
+
+        return $this->render('dashboard');
+    }
+
     public function actionLogin()
     {
         if (!\Yii::$app->user->isGuest) {
