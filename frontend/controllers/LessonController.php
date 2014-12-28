@@ -8,6 +8,7 @@ use app\models\seach\LessonSeach;
 use yii\web\Controller;
 use yii\web\NotFoundHttpException;
 use yii\filters\VerbFilter;
+use yii\filters\AccessControl;
 
 /**
  * LessonController implements the CRUD actions for Lesson model.
@@ -23,6 +24,36 @@ class LessonController extends Controller
                     'delete' => ['post'],
                 ],
             ],
+	    'access' => [
+		        'class' => AccessControl::className(),
+		        'rules' => [
+		           [ 
+				'actions' => ['view'],
+		                'allow' => true,
+		                'roles' => ['student'],
+		            ],
+			    [ 
+				'actions' => ['update'],
+		                'allow' => true,
+		                'roles' => ['teacher'],
+		            ],
+			    [ 
+				'actions' => ['delete', 'create'],
+		                'allow' => true,
+		                'roles' => ['admin'],
+		            ],
+			    [
+		                'actions' => ['signup'],
+		                'allow' => true,
+		                'roles' => ['?'],
+		            ],
+		            [
+		                'actions' => ['logout', 'index'],
+		                'allow' => true,
+		                'roles' => ['@'],
+		            ],
+			],
+	      ],
         ];
     }
 

@@ -36,12 +36,12 @@ AppAsset::register($this);
                 ['label' => 'Home', 'url' => ['/site/index']],
                 ['label' => 'About', 'url' => ['/site/about']],
                 ['label' => 'Contact', 'url' => ['/site/contact']],
-                ['label' => 'School', 'url' => ['/school/index']],
-                ['label' => 'Classes', 'url' => ['/classes/index']],
-                ['label' => 'Lesson', 'url' => ['/lesson/index']],
-                ['label' => 'Student', 'url' => ['/student/index']],
-                ['label' => 'Rating', 'url' => ['/rating/rating/index']],
+
+		
             ];
+	    if(Yii::$app->user->can('dashboard')){
+                    $menuItems[] = ['label' => 'Dashboard', 'url' => ['/site/dashboard']];
+                }
             if (Yii::$app->user->isGuest) {
                 $menuItems[] = ['label' => 'Signup', 'url' => ['/site/signup']];
                 $menuItems[] = ['label' => 'Login', 'url' => ['/site/login']];
@@ -66,7 +66,7 @@ AppAsset::register($this);
         <?= Alert::widget() ?>
         <?= $content ?>
             <?php  \Yii::$app->hello->Hello(); ?></br>
-            <?= \marina\simple\AutoloadExample::widget(); ?>`
+            <?= \marina\simple\AutoloadExample::widget(); ?>
         </div>
     </div>
 
